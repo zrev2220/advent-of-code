@@ -6,7 +6,7 @@ try:
         safe = True
         prevdiff = None
         for i in range(1, len(report)):
-            prev = report[i-1]
+            prev = report[i - 1]
             level = report[i]
             diff = level - prev
             if abs(diff) > 3 or diff == 0:

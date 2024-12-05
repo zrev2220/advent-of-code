@@ -4,14 +4,14 @@ from collections import Counter
 aList = []
 bCounter = Counter()
 try:
-  while True:
-    a,b = map(int, re.split(' +', input().strip()))
-    aList.append(a)
-    bCounter[b] += 1
+    while True:
+        a, b = map(int, re.split(" +", input().strip()))
+        aList.append(a)
+        bCounter[b] += 1
 except EOFError:
-  pass
+    pass
 
 score = 0
 for a in aList:
-  score += a * bCounter[a]
+    score += a * bCounter[a]
 print(score)
