@@ -30,7 +30,7 @@ def flood(coords) -> int:
         ]:
             i2 = i + i_dir
             j2 = j + j_dir
-            if i2 < 0 or i2 >= WIDTH or j2 < 0 or j2 >= HEIGHT or grid[i2][j2] != color:
+            if i2 < 0 or i2 >= HEIGHT or j2 < 0 or j2 >= WIDTH or grid[i2][j2] != color:
                 perimeter += 1
             elif grid[i2][j2] == color and (i2, j2) not in visited:
                 visited.add((i2, j2))
@@ -39,8 +39,8 @@ def flood(coords) -> int:
 
 
 price = 0
-for i in range(WIDTH):
-    for j in range(HEIGHT):
+for i in range(HEIGHT):
+    for j in range(WIDTH):
         loc = (i, j)
         if loc not in visited:
             price += flood(loc)
