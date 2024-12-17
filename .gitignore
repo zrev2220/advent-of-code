@@ -2,3 +2,6 @@
 .idea
 .python-version
 input.txt
+
+2024/14/part2-debug/*
+!2024/14/part2-debug/.gitkeep
