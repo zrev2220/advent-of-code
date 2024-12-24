@@ -36,10 +36,7 @@ while queue:
         j2 = j + dj
         if 0 <= i2 < SIZE and 0 <= j2 < SIZE and (i2, j2) not in blocks:
             existing_distance = distance[(i2, j2)]
-            if (
-                existing_distance is None
-                or current_distance + 1 < existing_distance
-            ):
+            if existing_distance is None or current_distance + 1 < existing_distance:
                 distance[(i2, j2)] = current_distance + 1
             queue.append((i2, j2))
     visited.add((i, j))

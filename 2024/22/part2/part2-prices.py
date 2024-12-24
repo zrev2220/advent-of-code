@@ -36,6 +36,6 @@ try:
         for _ in range(N):
             n = next_secret(n)
             prices.append(n % 10)
-        print(''.join(map(str, prices)))
+        print("".join(map(str, prices)))
 except EOFError:
     pass
