@@ -1,8 +1,3 @@
-# got hints from various comments here:
-# https://www.reddit.com/r/adventofcode/comments/1hg69ql/2024_day_17_part_2_can_someone_please_provide_a/
-# https://www.reddit.com/r/adventofcode/comments/1hgcuw8/2024_day_17_part_2_any_hints_folks/
-# https://www.reddit.com/r/adventofcode/comments/1hhtc6g/2024_day_17_part_2_explanation_of_the_solution/
-
 ANS = (2,4,1,3,7,5,0,3,4,3,1,5,5,5,3,0)
 
 
