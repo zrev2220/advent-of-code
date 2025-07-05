@@ -59,7 +59,7 @@ cheat_log = defaultdict[int, set[tuple[tuple[int, int], tuple[int, int]]]](set)
 
 
 def get_cheats(
-    start: tuple[int, int]
+    start: tuple[int, int],
 ) -> dict[tuple[tuple[int, int], tuple[int, int]], int]:
     result = 0
     visited = set()
