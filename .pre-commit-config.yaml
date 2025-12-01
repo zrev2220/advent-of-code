@@ -14,4 +14,4 @@ repos:
     rev: v2.15.0
     hooks:
       - id: pretty-format-kotlin
-        args: [ --autofix ]
+        args: [ --autofix, --ktfmt, --ktfmt-style=google ]
