@@ -18,7 +18,7 @@ def get_chunks(size):
 
 
 def process_combinations_chunk(args):
-    combinations_chunk, arref_data, free_vars, num_buttons, max_joltage = args
+    combinations_chunk, arref_data, free_vars, num_buttons = args
 
     id = multiprocessing.current_process()._identity[0] % multiprocessing.cpu_count()
 
@@ -63,7 +63,11 @@ if __name__ == "__main__":
     cpus = multiprocessing.cpu_count()
     chunk_size = max(1, len(lines) // cpus)
 
-    for line in tqdm(lines, position=0, desc="Lines"):
+    for line in tqdm(
+        lines,
+        position=0,
+        desc="Lines",
+    ):
         if not line:
             break
         parts = line.split()
@@ -72,7 +76,7 @@ if __name__ == "__main__":
 
         buttons = [list(map(int, item[1:-1].split(","))) for item in buttonsStr]
         joltage = list(map(int, joltageStr[1:-1].split(",")))
-        maxJoltage = max(joltage)
+        max_joltage = [min(joltage[b] for b in button) for button in buttons]
 
         m = len(joltage)
         n = len(buttons) + 1
@@ -87,7 +91,7 @@ if __name__ == "__main__":
         free_vars = [i for i in range(len(buttons)) if i not in pivots]
 
         all_combinations = list(
-            itertools.product(range(maxJoltage + 1), repeat=len(free_vars))
+            itertools.product(*(range(max_joltage[i] + 1) for i in free_vars))
         )
         total_combinations = len(all_combinations)
 
@@ -100,10 +104,7 @@ if __name__ == "__main__":
         with multiprocessing.Pool(processes=cpus) as pool:
             results = pool.map(
                 process_combinations_chunk,
-                [
-                    (chunk, Arref, free_vars, len(buttons), maxJoltage)
-                    for chunk in chunks
-                ],
+                [(chunk, Arref, free_vars, len(buttons)) for chunk in chunks],
             )
 
         best = min(result for result in results if result is not None)
